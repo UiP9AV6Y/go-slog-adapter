@@ -1,0 +1,4 @@
+level=ERROR source=adapter_impl_test.go:75 msg="error 4 message"
+level=INFO source=adapter_impl_test.go:76 msg="info 2 message"
+level=DEBUG source=adapter_impl_test.go:77 msg="debug 1 message"
+level=WARN source=adapter_impl_test.go:78 msg="warn 3 message"

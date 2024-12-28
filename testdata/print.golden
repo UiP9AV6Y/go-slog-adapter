@@ -1,0 +1,3 @@
+level=INFO source=adapter_impl_test.go:30 msg=helloworld
+level=INFO source=adapter_impl_test.go:31 msg=testtest
+level=INFO source=adapter_impl_test.go:32 msg=one2three
