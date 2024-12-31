@@ -1,0 +1,5 @@
+Usage of env-flagset:
+  -log.format value
+    	Log format. Valid values include text, and json [$TEST_LOG_FORMAT] (default text)
+  -log.level value
+    	Log level. Valid values include debug, info, warn, and error [$TEST_LOG_LEVEL] (default INFO)

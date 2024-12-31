@@ -1,0 +1,5 @@
+Usage of plain-flagset:
+  -log.format value
+    	Log format. Valid values include text, and json (default text)
+  -log.level value
+    	Log level. Valid values include debug, info, warn, and error (default INFO)
