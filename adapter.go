@@ -51,6 +51,14 @@ func NewDefault() *SlogAdapter {
 	return New(slog.Default(), slog.LevelInfo)
 }
 
+// NewDiscard uses [NewText] with [io.Discard] as writer.
+// The log level threshold is set high to cause the internal
+// logic to bail early instead of spending CPU cycles on
+// producing a log record that is never actually used.
+func NewDiscard() *SlogAdapter {
+	return NewText(io.Discard, slog.Level(99))
+}
+
 // NewText creates a [New] instance using a [slog.TextHandler]
 // with the provided writer and level.
 func NewText(writer io.Writer, level slog.Level) *SlogAdapter {
