@@ -75,3 +75,12 @@ func (f logFormat) Handler(w io.Writer, opts *slog.HandlerOptions) slog.Handler 
 
 	return slog.NewTextHandler(w, opts)
 }
+
+// NewHandler create a [slog.Handler] whose constructor options are only
+// initialized with the provided level.
+// for more complex scenarios use [LogFormatValue.Handler] directly.
+func NewHandler(w io.Writer, fmt LogFormatValue, lvl slog.Level) slog.Handler {
+	opts := handlerOptions(lvl, nil)
+
+	return fmt.Handler(w, opts)
+}

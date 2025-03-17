@@ -111,17 +111,31 @@ func (f *LogFlags) Level() slog.Level {
 	return f.lvlValue
 }
 
+// LevelFlag returns a [flag.Flag] controlling the instance LogLevel.
+func (f *LogFlags) LevelFlag() *flag.Flag {
+	return NewLogLevelFlag(&f.lvlValue)
+}
+
+// FormatFlag returns a [flag.Flag] controlling the instance LogFormat.
+func (f *LogFlags) FormatFlag() *flag.Flag {
+	return NewLogFormatFlag(f.fmtValue)
+}
+
 // Handler returns a [slog.Handler] from the internal state.
 // If no handler options are provided, a default
 // set will be created. In either case, the level
 // field will be overwritten with the value of [LogFlags.Level].
 func (f *LogFlags) Handler(w io.Writer, opts *slog.HandlerOptions) slog.Handler {
+	return f.fmtValue.Handler(w, handlerOptions(f.lvlValue, opts))
+}
+
+func handlerOptions(lvl slog.Level, opts *slog.HandlerOptions) *slog.HandlerOptions {
 	if opts == nil {
-		opts = &slog.HandlerOptions{Level: f.lvlValue}
+		opts = &slog.HandlerOptions{Level: lvl}
 	} else {
 		opts = &(*opts)
-		opts.Level = f.lvlValue
+		opts.Level = lvl
 	}
 
-	return f.fmtValue.Handler(w, opts)
+	return opts
 }
