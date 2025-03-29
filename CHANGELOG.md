@@ -1,5 +1,10 @@
 ## Unreleased
 
+## 0.4.0 / 2025-03-29
+
+* [CHANGE] bump gotest.tools to 3.5.2
+* [FEATURE] add flag.Flag factories for integration with other log frameworks
+
 ## 0.3.0 / 2025-02-28
 
 * [FEATURE] add helper factory for log discarding
